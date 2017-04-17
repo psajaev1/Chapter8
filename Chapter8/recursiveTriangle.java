@@ -48,7 +48,7 @@ public class recursiveTriangle extends JApplet
      
        
        
-        if (distance > xPos[0])
+        if (distance > 5)
         {
               int ABMidx, BCMidx, ACMidx, ABMidy, BCMidy, ACMidy;
        
@@ -69,11 +69,15 @@ public class recursiveTriangle extends JApplet
 
             //draw the Triangle
         
-            page.drawPoyline(xPos,yPos,xPos.length);
+            page.drawPolyline(xPos,yPos,xPos.length);
             //create 3 x,y Array using the midpoints you calculated
             
-            int[] ATrix = {XPos[0],ABMidx,ABMidy,xPos[0]);
-            int[] 
+            int[] ATrix = {xPos[0],ABMidx,BCMidy,xPos[0]};
+            int[] BTrix = {xPos[1],BCMidx,ACMidy,xPos[0]};
+            int[] CTrix = {xPos[2],ACMidx,ABMidy,xPos[0]};
+            int[] ATriy = {yPos[0],ABMidx,BCMidy,yPos[0]};
+            int[] BTriy = {yPos[1],BCMidx,ACMidy,yPos[1]};
+            int[] CTriy = {yPos[2],ACMidx,ABMidy,yPos[2]};
             
             //example
             //int[] ATrix = {xPos[0],Segment1Midx,Segment2Midx, xPos[0]};
@@ -83,7 +87,11 @@ public class recursiveTriangle extends JApplet
             // Three recursive calls for each section of triangle
             //example
             
-
+            Triangle(ATrix,ATriy, page);
+            Triangle(BTrix,BTriy, page);
+            Triangle(CTrix,BTriy, page);
+            
+            
         }
         
        

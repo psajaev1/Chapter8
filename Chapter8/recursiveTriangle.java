@@ -44,11 +44,11 @@ public class recursiveTriangle extends JApplet
    {
        //Find the distance between 2 points ex. - x,y & x1,y1
        
-       double distance = Math.sqrt((xPos[0] - xPos[1])^2 + (yPos[0] - yPos[1]^2));
+       double distance = Math.sqrt(Math.pow((xPos[2] - xPos[1]),2) + Math.pow((yPos[2] - yPos[1]),2));
      
        
        
-        if (distance > 5)
+        if (distance >= 4)
         {
               int ABMidx, BCMidx, ACMidx, ABMidy, BCMidy, ACMidy;
        
@@ -72,12 +72,13 @@ public class recursiveTriangle extends JApplet
             page.drawPolyline(xPos,yPos,xPos.length);
             //create 3 x,y Array using the midpoints you calculated
             
-            int[] ATrix = {xPos[0],ABMidx,BCMidy,xPos[0]};
-            int[] BTrix = {xPos[1],BCMidx,ACMidy,xPos[0]};
-            int[] CTrix = {xPos[2],ACMidx,ABMidy,xPos[0]};
-            int[] ATriy = {yPos[0],ABMidx,BCMidy,yPos[0]};
-            int[] BTriy = {yPos[1],BCMidx,ACMidy,yPos[1]};
-            int[] CTriy = {yPos[2],ACMidx,ABMidy,yPos[2]};
+            int[] ATrix = {xPos[0],ABMidx,ACMidx,xPos[0]};
+            int[] BTrix = {ABMidx,xPos[1],BCMidx,ABMidx};
+            int[] CTrix = {ACMidx,BCMidx,xPos[2],ACMidx};
+            
+            int[] ATriy = {yPos[0],ABMidy,ACMidy,yPos[0]};
+            int[] BTriy = {ABMidy,yPos[1],BCMidy,ABMidy};
+            int[] CTriy = {ACMidy,BCMidy,yPos[2],ACMidy};
             
             //example
             //int[] ATrix = {xPos[0],Segment1Midx,Segment2Midx, xPos[0]};
@@ -89,7 +90,7 @@ public class recursiveTriangle extends JApplet
             
             Triangle(ATrix,ATriy, page);
             Triangle(BTrix,BTriy, page);
-            Triangle(CTrix,BTriy, page);
+            Triangle(CTrix,CTriy, page);
             
             
         }
